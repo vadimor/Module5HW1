@@ -37,7 +37,7 @@ namespace Module5HW1.Services
 
         public async Task<AuthorizationResponse?> PostLoginSuccessfulAsync()
         {
-            var url = @$"{_siteUrl}/api/register";
+            var url = @$"{_siteUrl}/api/login";
             var authorizationRequest = new AuthorizationRequest { Email = @"eve.holt@reqres.in", Password = "cityslicka" };
             var content = new StringContent(_jsonService.Serialize(authorizationRequest), System.Text.Encoding.UTF8, "application/json");
             var responseMessage = await _httpService.SendAsync(HttpMethod.Post, url, content);
@@ -46,7 +46,7 @@ namespace Module5HW1.Services
 
         public async Task<NotFoundResponse?> PostLoginUnsuccessfulAsync()
         {
-            var url = @$"{_siteUrl}/api/register";
+            var url = @$"{_siteUrl}/api/login";
             var authorizationRequest = new AuthorizationRequest { Email = @"peter@klaven" };
             var content = new StringContent(_jsonService.Serialize(authorizationRequest), System.Text.Encoding.UTF8, "application/json");
             var responseMessage = await _httpService.SendAsync(HttpMethod.Post, url, content);

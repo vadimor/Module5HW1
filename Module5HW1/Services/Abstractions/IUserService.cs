@@ -5,7 +5,7 @@ namespace Module5HW1.Services.Abstractions
 {
     public interface IUserService
     {
-        Task DeleteAsync();
+        Task<NoContentResponse?> DeleteAsync();
         Task<ListResponse<User>?> GetDelayedResponseAsync();
         Task<ListResponse<User>?> GetListUsersAsync();
         Task<SingleResponse<User>?> GetSingleUserAsync();

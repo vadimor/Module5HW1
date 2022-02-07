@@ -21,36 +21,28 @@ namespace Module5HW1.Services
         {
             var url = @$"{_siteUrl}/api/register";
             var authorizationRequest = new AuthorizationRequest { Email = @"eve.holt@reqres.in", Password = "pistol" };
-            var content = new StringContent(_jsonService.Serialize(authorizationRequest), System.Text.Encoding.UTF8, "application/json");
-            var responseMessage = await _httpService.SendAsync(HttpMethod.Post, url, content);
-            return _jsonService.Deserialize<AuthorizationResponse>(await responseMessage.Content.ReadAsStringAsync());
+            return await _httpService.SendAsync<AuthorizationResponse>(HttpMethod.Post, url, authorizationRequest);
         }
 
         public async Task<BadRequestResponse?> PostRegisterUnsuccessfulAsync()
         {
             var url = @$"{_siteUrl}/api/register";
             var authorizationRequest = new AuthorizationRequest { Email = @"sydney@fife" };
-            var content = new StringContent(_jsonService.Serialize(authorizationRequest), System.Text.Encoding.UTF8, "application/json");
-            var responseMessage = await _httpService.SendAsync(HttpMethod.Post, url, content);
-            return _jsonService.Deserialize<BadRequestResponse>(await responseMessage.Content.ReadAsStringAsync());
+            return await _httpService.SendAsync<BadRequestResponse>(HttpMethod.Post, url, authorizationRequest);
         }
 
         public async Task<AuthorizationResponse?> PostLoginSuccessfulAsync()
         {
             var url = @$"{_siteUrl}/api/login";
             var authorizationRequest = new AuthorizationRequest { Email = @"eve.holt@reqres.in", Password = "cityslicka" };
-            var content = new StringContent(_jsonService.Serialize(authorizationRequest), System.Text.Encoding.UTF8, "application/json");
-            var responseMessage = await _httpService.SendAsync(HttpMethod.Post, url, content);
-            return _jsonService.Deserialize<AuthorizationResponse>(await responseMessage.Content.ReadAsStringAsync());
+            return await _httpService.SendAsync<AuthorizationResponse>(HttpMethod.Post, url, authorizationRequest);
         }
 
         public async Task<NotFoundResponse?> PostLoginUnsuccessfulAsync()
         {
             var url = @$"{_siteUrl}/api/login";
             var authorizationRequest = new AuthorizationRequest { Email = @"peter@klaven" };
-            var content = new StringContent(_jsonService.Serialize(authorizationRequest), System.Text.Encoding.UTF8, "application/json");
-            var responseMessage = await _httpService.SendAsync(HttpMethod.Post, url, content);
-            return _jsonService.Deserialize<NotFoundResponse>(await responseMessage.Content.ReadAsStringAsync());
+            return await _httpService.SendAsync<NotFoundResponse>(HttpMethod.Post, url, authorizationRequest);
         }
     }
 }

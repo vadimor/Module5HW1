@@ -2,6 +2,6 @@
 {
     public interface IHttpService
     {
-        Task<HttpResponseMessage> SendAsync(HttpMethod httpMethod, string url, HttpContent? content = null);
+        Task<T?> SendAsync<T>(HttpMethod httpMethod, string url, object? content = null);
     }
 }
